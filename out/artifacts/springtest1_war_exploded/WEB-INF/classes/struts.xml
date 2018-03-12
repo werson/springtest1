@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <!-- 指定全局国际化资源文件 -->
+    <constant name="struts.custom.i18n.resources" value="mess"/>
+    <!-- 指定国际化编码所使用的字符集 -->
+    <constant name="struts.i18n.encoding" value="GBK"/>
+    <!-- 支持动态调用 -->
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+    <!-- 设置开发模式 -->
+    <constant name="struts.devMode" value="true"/>
+
+    <constant name="struts.objectFactory" value="spring"/>
+
+    <!-- 所有的Action定义都应该放在package下 -->
+    <package name="default" namespace="/" extends="struts-default">
+        <action name="register">
+            <result>/test/register.jsp</result>
+        </action>
+        <action name="addUser" class="RegisterAction">
+            <result name="success">/test/login.jsp</result>
+            <result name="error">/test/error.jsp</result>
+        </action>
+        <action name="login" class="LoginAction">
+            <result name="error">/test/error.jsp</result>
+            <result name="success">/test/welcome.jsp</result>
+        </action>
+        <action name="hello" class="com.werson.springtest.action.HelloAction">
+            <result name="success">/test/login.jsp</result>
+        </action>
+    </package>
+
+</struts>
